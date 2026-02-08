@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Script V2Pro Plus IA</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="card" id="formCard">
+    <h1>Script V2Pro Plus iA</h1>
+    <p class="sub">Page 2</p>
+
+    <input type="text" id="home" placeholder="Home Team">
+    <input type="text" id="away" placeholder="Away Team">
+    <input type="text" id="matchid" placeholder="Match ID">
+
+    <button onclick="startIA()">START</button>
+  </div>
+
+  <div class="card hidden" id="loadingCard">
+    <h2>Extracting external match statistics using iA 🤖</h2>
+    <div class="timer" id="timer">00:30</div>
+  </div>
+
+  <div class="card hidden" id="resultCard">
+    <h2 id="matchTitle"></h2>
+
+    <div class="box">⚽ Score Exact: <span id="score">0 - 0</span></div>
+    <div class="box">🏆 Winner: <span id="winner">Draw</span></div>
+    <div class="box">🔥 Over / Under: <span id="ou">Under 1.5</span></div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
