@@ -1,37 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Script V2Pro Plus IA</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>V2Pro IA – Analyse Football</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+<div class="app">
 
-  <div class="card" id="formCard">
-    <h1>Script V2Pro Plus iA</h1>
-    <p class="sub">Page 2</p>
-
-    <input type="text" id="home" placeholder="Home Team">
-    <input type="text" id="away" placeholder="Away Team">
-    <input type="text" id="matchid" placeholder="Match ID">
-
-    <button onclick="startIA()">START</button>
+  <!-- INTRO -->
+  <div class="screen active" id="intro">
+    <h1>V2Pro IA</h1>
+    <p>Analyse intelligente des matchs</p>
+    <button onclick="goToForm()">Commencer</button>
   </div>
 
-  <div class="card hidden" id="loadingCard">
-    <h2>Extracting external match statistics using iA 🤖</h2>
-    <div class="timer" id="timer">00:30</div>
+  <!-- FORM -->
+  <div class="screen" id="form">
+    <h2>Données du match</h2>
+
+    <input id="home" placeholder="Équipe domicile">
+    <input id="away" placeholder="Équipe extérieure">
+
+    <label>Force Équipe Domicile (1–5)</label>
+    <input type="range" id="homePower" min="1" max="5" value="3">
+
+    <label>Force Équipe Extérieure (1–5)</label>
+    <input type="range" id="awayPower" min="1" max="5" value="3">
+
+    <button onclick="startAnalyse()">Lancer l’analyse</button>
   </div>
 
-  <div class="card hidden" id="resultCard">
+  <!-- LOADING -->
+  <div class="screen" id="loading">
+    <h2>Analyse des statistiques…</h2>
+    <div class="loader"></div>
+    <p id="countdown">30 s</p>
+  </div>
+
+  <!-- RESULT -->
+  <div class="screen" id="result">
     <h2 id="matchTitle"></h2>
 
-    <div class="box">⚽ Score Exact: <span id="score">0 - 0</span></div>
-    <div class="box">🏆 Winner: <span id="winner">Draw</span></div>
-    <div class="box">🔥 Over / Under: <span id="ou">Under 1.5</span></div>
+    <div class="card">Score Exact Probable : <span id="score"></span></div>
+    <div class="card">Résultat Final (1X2) : <span id="winner"></span></div>
+    <div class="card">Mi-temps / Final : <span id="mtft"></span></div>
+    <div class="card">Over / Under : <span id="ou"></span></div>
+
+    <button onclick="restart()">Nouvelle analyse</button>
   </div>
 
 </div>
